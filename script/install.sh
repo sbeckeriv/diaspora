@@ -36,11 +36,11 @@ BINARIES="git ruby gem bundle sed mktemp"       # required programs
 
 D_GIT_CLONE_PATH="/srv/diaspora"     # path for diaspora
 
-D_REMOTE_REPO_URL="https://github.com/diaspora/diaspora.git"
+D_REMOTE_REPO_URL="https://github.com/sbeckeriv/diaspora.git"
 
-D_INSTALL_SCRIPT_URL="https://raw.github.com/diaspora/diaspora/master/script/install.sh"
+D_INSTALL_SCRIPT_URL="https://raw.github.com/sbeckeriv/diaspora/master/script/install.sh"
 
-D_WIKI_URL="https://github.com/diaspora/diaspora/wiki"
+D_WIKI_URL="https://github.com/sbeckeriv/diaspora/wiki"
 
 D_IRC_URL="irc://freenode.net/diaspora"
 
@@ -50,7 +50,7 @@ D_DB_CONFIG_FILE="config/database.yml"
 
 D_DB_HOST="localhost"
 
-D_DB_USER="diaspora"
+D_DB_USER="dia"
 
 D_DB_PASS="diaspora"
 
