@@ -50,7 +50,7 @@ D_DB_CONFIG_FILE="config/database.yml"
 
 D_DB_HOST="localhost"
 
-D_DB_USER="dia"
+D_DB_USER="diaspora"
 
 D_DB_PASS="diaspora"
 
