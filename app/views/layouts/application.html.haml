@@ -9,8 +9,8 @@
     %meta{'http-equiv' => 'X-UA-Compatible', :content => 'IE=edge,chrome=1'}
     %meta{"http-equiv"=>"Content-Type", :content=>"text/html; charset=utf-8"}
 
-    %meta{:name => "description", :content => "Diaspora*"}
-    %meta{:name => "author", :content => "Diaspora, Inc."}
+    %meta{:name => "description", :content => "DeathByEscalator"}
+    %meta{:name => "author", :content => "Hashco.de"}
     = og_site_name
 
     %link{:rel => 'shortcut icon', :href => "#{image_path('favicon.png')}" }
@@ -23,7 +23,7 @@
     = include_mixpanel
 
     = include_base_css_framework
-    = stylesheet_link_tag 'login', 'application', 'default'
+    = stylesheet_link_tag 'login', 'application', 'default','custom'
 
     - if rtl?
       = stylesheet_link_tag :rtl, :media => 'all'
@@ -68,11 +68,7 @@
     %footer
       .container
         %ul#footer_nav
-          %li= link_to '@joindiaspora', "http://twitter.com/joindiaspora"
-          %li= link_to 'github', "https://github.com/diaspora/diaspora"
-          %li= link_to t('layouts.header.blog'), "http://blog.joindiaspora.com"
-          %li= link_to t('layouts.header.code'), "#{root_path.chomp('/')}/source.tar.gz" unless request.url.match(/joindiaspora.com/)
-          %li= link_to t('.whats_new'), 'https://github.com/diaspora/diaspora/wiki/Changelog'
+          %li= link_to '@hashcode', "http://twitter.com/hashcode"
           %li= link_to(t('layouts.application.toggle'), toggle_mobile_path)  if is_mobile_device?
         = image_tag 'branding/powered_by_diaspora.png', :height => "11px", :width => "145px"
 

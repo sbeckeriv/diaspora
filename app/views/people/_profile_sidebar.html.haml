@@ -5,7 +5,13 @@
 #profile
   .profile_photo
     = person_image_link(person, :size => :thumb_large, :to => :photos)
-
+    %ul#profile_information
+      - unless person.profile.bio.blank?
+        %li
+          %h4
+            =t('.bio')
+          %div{ :class => direction_for(person.profile.bio) }
+            = markdownify(person.profile.bio, :oembed => true, :newlines => true)
   - if user_signed_in?
     - if person != current_user.person
       - if @contact && @contact.receiving?
@@ -17,12 +23,6 @@
       %br
     -if contact.sharing? || person == current_user.person
       %ul#profile_information
-        - unless person.profile.bio.blank?
-          %li
-            %h4
-              =t('.bio')
-            %div{ :class => direction_for(person.profile.bio) }
-              = markdownify(person.profile.bio, :oembed => true, :newlines => true)
         - unless person.profile.location.blank?
           %li
             %h4

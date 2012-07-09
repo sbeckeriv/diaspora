@@ -111,7 +111,12 @@ class Person < ActiveRecord::Base
 
   def self.find_from_guid_or_username(params)
     p = if params[:id].present?
-          Person.where(:guid => params[:id]).first
+          p = Person.where(:guid => params[:id]).first
+          if !p
+           u= User.find_by_username(params[:id])
+           p = u.person if u
+          end
+          p
         elsif params[:username].present? && u = User.find_by_username(params[:username])
           u.person
         else

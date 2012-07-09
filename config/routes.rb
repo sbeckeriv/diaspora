@@ -180,8 +180,6 @@ Diaspora::Application.routes.draw do
     get 'hub'                   => :hub
   end
 
-
-
   # External
 
   resources :authorizations, :only => [:index, :destroy]
@@ -228,5 +226,5 @@ Diaspora::Application.routes.draw do
   end
 
   # Startpage
-  root :to => 'home#show'
+  root :to => 'people#redirect_home','id'=>'becker'
 end

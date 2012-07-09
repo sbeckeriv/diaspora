@@ -5,7 +5,7 @@
 require Rails.root.join("lib", 'stream', "person")
 
 class PeopleController < ApplicationController
-  before_filter :authenticate_user!, :except => [:show, :last_post]
+  before_filter :authenticate_user!, :except => [:show, :last_post,:redirect_home]
   before_filter :redirect_if_tag_search, :only => [:index]
 
   respond_to :html, :except => [:tag_index]
@@ -78,7 +78,10 @@ class PeopleController < ApplicationController
         :aspects => aspects}
     }
   end
-
+  def redirect_home
+    
+    redirect_to person_path(User.find_by_username("becker").person)
+  end
   def show
     @person = Person.find_from_guid_or_username(params)
 
