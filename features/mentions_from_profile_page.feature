@@ -6,13 +6,16 @@ Feature: mentioning a contact from their profile page
 
     Background:
       Given I am on the home page
-      And a user with username "bob"
-      And a user with username "alice"
+      And following users exist:
+        | username   |
+        | bob        |
+        | alice      |
 
       When I sign in as "bob@bob.bob"
       And a user with username "bob" is connected with "alice"
-      And I have an aspect called "PostingTo"
-      And I have an aspect called "NotPostingThingsHere"
+      And I have following aspects:
+        | PostingTo            |
+        | NotPostingThingsHere |
       And I have user with username "alice" in an aspect called "PostingTo"
       And I have user with username "alice" in an aspect called "NotPostingThingsHere"
 
@@ -21,8 +24,7 @@ Feature: mentioning a contact from their profile page
     Scenario: mentioning while posting to all aspects
       Given I am on "alice@alice.alice"'s page
       And I have turned off jQuery effects
-      And I click "Mention" button
-      And I expand the publisher in the modal window
+      And I want to mention her from the profile
       And I append "I am eating a yogurt" to the publisher
       And I press "Share" in the modal window
       And I wait for the ajax to finish
@@ -39,9 +41,7 @@ Feature: mentioning a contact from their profile page
     Scenario: mentioning while posting to just one aspect
       Given I am on "alice@alice.alice"'s page
       And I have turned off jQuery effects
-      And I click "Mention" button
-      And I wait for the ajax to finish
-      And I expand the publisher in the modal window
+      And I want to mention her from the profile
       And I append "I am eating a yogurt" to the publisher
       And I press the aspect dropdown in the modal window
       And I toggle the aspect "NotPostingThingsHere" in the modal window

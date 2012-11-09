@@ -7,7 +7,7 @@ require 'spec_helper'
 describe InvitationsController do
 
   before do
-    AppConfig[:open_invitations] = true
+    AppConfig.settings.invitations.open = true
     @user   = alice
     @invite = {'email_inviter' => {'message' => "test", 'emails' => "abc@example.com"}}
   end
@@ -27,12 +27,12 @@ describe InvitationsController do
     end
 
     it "redirects if invitations are closed" do
-      open_bit = AppConfig[:open_invitations]
-      AppConfig[:open_invitations] = false
+      open_bit = AppConfig.settings.invitations.open?
+      AppConfig.settings.invitations.open =  false
 
       post :create, @invite
       response.should be_redirect
-      AppConfig[:open_invitations] = open_bit
+      AppConfig.settings.invitations.open = open_bit
     end
 
     it 'returns to the previous page on success' do
@@ -76,6 +76,20 @@ describe InvitationsController do
     it 'renders' do
       sign_in :user, @user
       get :new
+    end
+  end
+
+  describe 'redirect logged out users to the sign in page' do
+    it 'redriects #new' do
+      get :new
+      response.should be_redirect
+      response.should redirect_to new_user_session_path
+    end
+
+    it 'redirects #create' do
+      post :create
+      response.should be_redirect
+      response.should redirect_to new_user_session_path
     end
   end
 end

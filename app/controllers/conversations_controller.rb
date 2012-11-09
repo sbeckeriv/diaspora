@@ -1,14 +1,14 @@
 class ConversationsController < ApplicationController
   before_filter :authenticate_user!
 
-  respond_to :html, :json, :js
+  respond_to :html, :mobile, :json, :js
 
   def index
     @conversations = Conversation.joins(:conversation_visibilities).where(
-      :conversation_visibilities => {:person_id => current_user.person.id}).paginate(
+      :conversation_visibilities => {:person_id => current_user.person_id}).paginate(
       :page => params[:page], :per_page => 15, :order => 'updated_at DESC')
 
-    @visibilities = ConversationVisibility.where(:person_id => current_user.person.id).paginate(
+    @visibilities = ConversationVisibility.where(:person_id => current_user.person_id).paginate(
       :page => params[:page], :per_page => 15, :order => 'updated_at DESC')
 
     @unread_counts = {}
@@ -18,7 +18,7 @@ class ConversationsController < ApplicationController
     @conversations.each { |c| @authors[c.id] = c.last_author }
 
     @conversation = Conversation.joins(:conversation_visibilities).where(
-      :conversation_visibilities => {:person_id => current_user.person.id, :conversation_id => params[:conversation_id]}).first
+      :conversation_visibilities => {:person_id => current_user.person_id, :conversation_id => params[:conversation_id]}).first
 
     respond_with do |format|
       format.html
@@ -31,7 +31,7 @@ class ConversationsController < ApplicationController
       contact.person_id
     end
 
-    params[:conversation][:participant_ids] = person_ids | [current_user.person.id]
+    params[:conversation][:participant_ids] = person_ids | [current_user.person_id]
     params[:conversation][:author] = current_user.person
     message_text = params[:conversation].delete(:text)
     params[:conversation][:messages_attributes] = [ {:author => current_user.person, :text => message_text }]
@@ -52,7 +52,7 @@ class ConversationsController < ApplicationController
 
   def show
     if @conversation = Conversation.joins(:conversation_visibilities).where(:id => params[:id],
-                                                                            :conversation_visibilities => {:person_id => current_user.person.id}).first
+                                                                            :conversation_visibilities => {:person_id => current_user.person_id}).first
       if @visibility = ConversationVisibility.where(:conversation_id => params[:id], :person_id => current_user.person.id).first
         @visibility.unread = 0
         @visibility.save
@@ -82,7 +82,10 @@ class ConversationsController < ApplicationController
     elsif params[:aspect_id]
       @contact_ids = current_user.aspects.find(params[:aspect_id]).contacts.map{|c| c.id}.join(',')
     end
+    if session[:mobile_view] == true && request.format.html?
+    render :layout => true
+    elsif
     render :layout => false
+    end
   end
-
 end

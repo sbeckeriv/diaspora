@@ -6,7 +6,6 @@
 %html{:lang => I18n.locale.to_s, :dir => (rtl?) ? 'rtl' : 'ltr'}
   %head
     %meta{:charset => 'utf-8'}
-    %meta{'http-equiv' => 'X-UA-Compatible', :content => 'IE=edge,chrome=1'}
     %meta{"http-equiv"=>"Content-Type", :content=>"text/html; charset=utf-8"}
 
     %meta{:name => "description", :content => "DeathByEscalator"}
@@ -24,6 +23,7 @@
 
     = include_base_css_framework
     = stylesheet_link_tag 'login', 'application', 'default'
+    = stylesheet_link_tag 'login', 'application', 'default',"lightbox"
 
     - if rtl?
       = stylesheet_link_tag :rtl, :media => 'all'
@@ -36,7 +36,7 @@
     = jquery_include_tag
 
     - unless @landing_page
-      = javascript_include_tag :main, :templates
+      = javascript_include_tag :main, :templates,"lightbox"
       = load_javascript_locales
 
     = set_asset_host
@@ -65,12 +65,7 @@
       %a{:id=>"back-to-top", :title=>"#{t('.back_to_top')}", :href=>"#"}
         &#8679;
 
-    %footer
-      .container
-        %ul#footer_nav
-          %li= link_to '@hashcode', "http://twitter.com/hashcode"
-          %li= link_to(t('layouts.application.toggle'), toggle_mobile_path)  if is_mobile_device?
-        = image_tag 'branding/powered_by_diaspora.png', :height => "11px", :width => "145px"
+    = render :partial =>'shared/footer'
 
     = include_chartbeat
     = include_mixpanel_guid

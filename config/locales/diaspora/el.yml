@@ -48,12 +48,18 @@ el:
       resque_overview: "Επισκόπηση Resque"
       user_search: "Αναζήτηση χρηστών"
       weekly_user_stats: "Εβδομαδιαία  στατιστηκά χρηστών"
+    correlations:
+      correlations_count: "Συσχετίσεις με Είσοδος:"
     stats:
       2weeks: "2 εβδομάδες"
+      50_most: "Τα 50 πιο διαδεδομένα μαρκαρίσματα"
       comments:
         one: "%{count} σχόλιο"
         other: "%{count} σχόλια"
         zero: "%{count} σχόλια"
+      current_segment: "Το τωρινό αποτέλεσμα είναι κατά μέσο όρο <b>%{post_yest}</b> διμοσιευσης ανά χρήστη, από <b>%{post_day}</b>"
+      daily: "Ημερήσιο"
+      display_results: "εμφάνιση αποτελεσμάτων <b>%{segment}</b>"
       go: "Μετάβαση"
       month: "Μήνας"
       posts:
@@ -64,6 +70,8 @@ el:
         one: "%{count} μοίρασμα"
         other: "%{count} μοιράσματα"
         zero: "%{count} μοιράσματα"
+      tag_name: "Όνομα μαρκαρίσματος: <b>%{name_tag}</b> Μετρητής: <b>%{count_tag}</b>"
+      usage_statistic: "Στατιστικά χρήσης"
       users:
         one: "%{count} χρήστης"
         other: "%{count} χρήστες"
@@ -150,8 +158,8 @@ el:
       handle_explanation: "Αυτό είναι το αναγνωριστικό σας στο Diaspora (ID). Όπως και με μια διεύθυνση ηλεκτρονικού ταχυδρομείου, μπορείτε να το δώσετε σε άλλους για να σας βρουν."
       help:
         do_you: "Μήπως.."
-        email_feedback: "%{link} το σχόλιό σας, αν το προτιμάτε"
-        email_link: "Στείλτε με ηλεκτρονικό ταχυδρομείο"
+        email_feedback: "Αν θέλετε, μπορείτε να στείλετε τα σχόλιά σας με %{link}."
+        email_link: "ηλεκτρονικό ταχυδρομείο"
         feature_suggestion: "... έχετε να προτείνετε μία δυνατότητα %{link} ;"
         find_a_bug: "... βρήκατε ένα σφάλμα %{link} ;"
         have_a_question: "... έχετε μία ερώτηση %{link} ;"
@@ -160,12 +168,12 @@ el:
         tag_bug: "bug"
         tag_feature: "feature"
         tag_question: "question"
-        tutorials_wiki_and_forum: "%{tutorial} & %{wiki} & %{forum}: Οδηγοί από την κοινότητα του Diaspora, how-to, και νέα"
+        tutorials_wiki_and_forum: "%{tutorial} & %{wiki} & %{forum}: Οδηγοί από την κοινότητα του Diaspora, how-to, και νέα."
       introduce_yourself: "Αυτή είναι η Ροή σας. Μπείτε και συστηθείτε."
       keep_diaspora_running: "Κρατήστε το Diaspora σε γρήγορη ανάπτυξη με μηνιαία δωρεά!"
-      keep_pod_running: "Διατηρείστε τη καλή λειτουργία του %{pod}, παρέχοντας στους servers μας τη καφεΐνη τους με μια μηνιαία δωρεά!"
+      keep_pod_running: "Διατηρείστε τη καλή λειτουργία του %{pod}, παρέχοντας στους servers μας τη μηνιαία δωρεά σας!"
       new_here:
-        follow: "Ακολουθήστε τη %{link} και καλωσορίστε νέους χρήστες στο Diaspora*!"
+        follow: "Ακολουθήστε την ετικέτα %{link} και καλωσορίστε νέους χρήστες στο Diaspora*!"
         learn_more: "Μάθετε περισσότερα"
         title: "Καλωσήλθατε Νέοι Χρήστες"
       no_contacts: "Καμία επαφή"
@@ -209,7 +217,7 @@ el:
     two: "%{count} πτυχές"
     update:
       failure: "Η πτυχή σας, %{name}, έχει πολύ μεγάλο όνομα για να αποθηκευτεί."
-      success: "Έγινε επιτυχώς η επεξεργασία της πτυχής σας,% {name}."
+      success: "Έγινε επιτυχώς η επεξεργασία της πτυχής σας, %{name}."
     zero: "καμία πτυχή"
   authorizations:
     index:
@@ -228,9 +236,9 @@ el:
       failure: "Δεν μπόρεσα να σταματήσω να αγνοώ αυτό το χρήστη. #evasion"
       success: "Για να δούμε τι έχουν να πουν! #sayhello"
   bookmarklet:
-    explanation: "Δημοσιεύστε στο Diaspora από οπουδήποτε προσθέτοντας %{link}."
-    heading: "Σελιδοδείκτης"
-    post_something: "Αναρτήστε κάτι στο Diaspora"
+    explanation: "Αναρτήστε στο Diaspora από οπουδήποτε προσθέτοντας αυτό τον σύνδεσμο => %{link}."
+    heading: "Εφαρμογή σελιδοδείκτη"
+    post_something: "Αναρτήστε στο Diaspora"
     post_success: "Αναρτήθηκε! Κλείνει!"
   cancel: "Ακύρωση"
   comments:
@@ -360,6 +368,7 @@ el:
       back_to_top: "Πίσω στην αρχή"
       powered_by: "POWERED BY DIASPORA*"
       public_feed: "Δημόσια ανατροφοδότηση (feed) του Diaspora για τον χρήστη %{name}"
+      source_package: "κατεβάστε τον πηγαίο κώδικα του πακέτου"
       toggle: "εναλλαγή σε κινητό"
       whats_new: "Τι νέα?"
       your_aspects: "οι πτυχές σας"
@@ -523,7 +532,7 @@ el:
 
           Με Αγάπη,
 
-          Το ρομπότ αυτόματης αποστολής e-mail του Diaspora*!
+          Το e-mail ρομπότ του Diaspora*!
 
           [1]: %{invite_url}
     invited_you: "O/H %{name} σε προσκάλεσε στο Diaspora*"
@@ -653,12 +662,9 @@ el:
       not_found: "Λυπούμαστε, δεν καταφέραμε να βρούμε αυτή την ανάρτηση."
       permalink: "Μόνιμος σύνδεσμος:"
       photos_by:
-        few: "%{count} photos by %{author}"
-        many: "%{count} photos by %{author}"
-        one: "One photo by %{author}"
-        other: "%{count} photos by %{author}"
-        two: "Two photos by %{author}"
-        zero: "No photos by %{author}"
+        one: "Μια φωτογραφεία του/της %{author}"
+        other: "%{count} φωτογραφίες του/της %{author}"
+        zero: "Δεν υπάρχουν φωτογραφίες για τον/την %{author}"
       reshare_by: "Επαναμοίραση από %{author}"
   previous: "προηγούμενο"
   privacy: "Απόρρητο"
@@ -829,6 +835,7 @@ el:
     notification:
       new: "Νέο %{type} από τον χρήστη %{from}"
     public_explain:
+      atom_feed: ""
       control_your_audience: "Ελέγξτε το Κοινό σας"
       logged_in: "συνδεδεμένος/η στο %{service}"
       manage: "διαχείριση συναφών υπηρεσιών"
@@ -928,7 +935,7 @@ el:
     tags:
       contacts_title: "Άτομα που τους αρέσει αυτή ή ετικέτα"
       tag_prefill_text: "Αυτό που σκέφτομαι για %{tag_name} είναι... "
-      title: "Δημοσιοποιήσεις με ετικέτα: %{tags}"
+      title: "Δημοσιοποιήσατε με ετικέτα: %{tags}"
   tag_followings:
     create:
       failure: "Η προσπάθεια σας να ακολουθήσετε την ετικέτα #%{name} απέτυχε. Μήπως την ακολουθείτε ήδη;"
@@ -972,7 +979,7 @@ el:
       wrong_password: "Ο κωδικός που εισάγατε δεν ταιριάζει με τον τωρινό κωδικό σας."
     edit:
       also_commented: "...κάποιος επίσης σχολίασε σε δημοσίευση επαφής σας;"
-      auto_follow_aspect: "Πτυχή για αυτόματη ακολούθηση"
+      auto_follow_aspect: "Πτυχή για αυτόματη Παρακολούθησης"
       auto_follow_back: "Αυτόματη ακολούθηση αν κάποιος σας ακουλουθήσει"
       change: "Αλλαγή"
       change_email: "Αλλαγή διεύθυνσης ηλεκτρονικού ταχυδρομείου"
@@ -997,7 +1004,7 @@ el:
       edit_account: "Επεξεργασία λογαριασμού"
       email_awaiting_confirmation: "Σας στείλαμε έναν σύνδεσμο ενεργοποίησης στο %{unconfirmed_email}. Μέχρι να ακολουθήσετε αυτόν τον σύνδεσμο και να ενεργοποιήσετε τη νέα διεύθυνση, θα συνεχίσουμε να χρησιμοποιούμε την αρχική σας %{email}."
       export_data: "Εξαγωγή Δεδομένων"
-      following: "Ρυθμίσεις Ακολούθησης"
+      following: "Ρυθμίσεις Παρακολούθησης"
       getting_started: "Προτιμήσεις Νέου Χρήστη"
       liked: "...σε κάποιον αρέσει η δημοσίευση σας;"
       mentioned: "...επισημανθήκατε σε μία φωτογραφία;"
@@ -1032,8 +1039,8 @@ el:
       does_not_exist: "Ο χρήστης %{username} δεν υπάρχει!"
     update:
       email_notifications_changed: "Αλλαγή ειδοποιήσεων ηλεκτρονικού ταχυδρομείου,επιτυχής"
-      follow_settings_changed: "Οι ρυθμίσεις ακολούθησης έχουν αλλάξει"
-      follow_settings_not_changed: "Η αλλαγή ρυθμίσεων ακολούθησης απέτυχε."
+      follow_settings_changed: "Οι ρυθμίσεις παρακολούθησης έχουν αλλάξει"
+      follow_settings_not_changed: "Η αλλαγή ρυθμίσεων παρακολουθήσεις απέτυχε."
       language_changed: "Αλλαγή Γλώσσας επιτυχής"
       language_not_changed: "Η αλλαγή γλώσσας απέτυχε"
       password_changed: "Ο κωδικός σας άλλαξε. Μπορείτε τώρα να συνδεθείτε με τον νέο κωδικό. "
