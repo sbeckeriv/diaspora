@@ -159,7 +159,7 @@ group :test do
 end
 
 group :test, :development do
-  gem 'debugger', '1.2.0'
+  #gem 'debugger', '1.2.0'
   gem "rspec-rails", "2.11.0" 
 end
 

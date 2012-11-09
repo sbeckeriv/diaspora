@@ -1,127 +1,182 @@
-//   licensed under the Affero General Public License version 3 or later.  See
-//   the COPYRIGHT file.
-
-@import '_mixins.css.scss';
-
-#lightbox{
-  z-index: 1003;
-  position: fixed;
+/* line 6, ../sass/lightbox.sass */
+#lightboxOverlay {
+  position: absolute;
   top: 0;
-  right: 0;
+  left: 0;
+  z-index: 9999;
+  background-color: black;
+  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=85);
+  opacity: 0.85;
   display: none;
-  overflow-y: auto;
-  width: 100%;
-  text-align: center;
-  padding-top: 80px;
-  padding-bottom: 20px;
-
-  color: #666;
-  text-shadow: none;
-  font-size: 12px;
-
-  &.show{
-    position: absolute;
-    display: block;
-  }
-
-  #lightbox-image{
-    @include box-shadow(0, 10px, 20px, black);
-    top: 0;
-    display: block;
-    max-width: 800px;
-    max-height: 800px;
-    margin-bottom: 120px;
-  }
-
-  #lightbox-content{
-    text-align: left;
-    display: inline-block;
-  }
-
-  #lightbox-links{
-    margin-top: 12px;
-
-    .attribution{
-      float: right;
-    }
-
-    #lightbox-attribution-link{
-      color: #999;
-      font-weight: bold;
-      &:hover{
-        color: #eee;
-      }
-    }
-  }
-
-  #lightbox-close-link,
-  #lightbox-attribution-link,
-  #lightbox-short-link{
-    display: inline-block;
-    color: #333;
-    text-decoration: none;
-    line-height: 14px;
-
-    &:hover{
-      color: #eee;
-    }
-  }
-
-  #lightbox-close-link{
-    color: #666;
-    margin-bottom: 12px;
-  }
 }
 
-#lightbox-backdrop{
-  -moz-box-shadow:inset 0 0 50px #000000;
-  -webkit-box-shadow:inset 0 0 50px #000000;
-  box-shadow:inset 0 0 50px #000000;
+/* line 15, ../sass/lightbox.sass */
+#lightbox {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  z-index: 10000;
+  text-align: center;
+  line-height: 0;
+  font-family: "lucida grande", tahoma, verdana, arial, sans-serif;
+  font-weight: normal;
+}
+/* line 24, ../sass/lightbox.sass */
+#lightbox img {
+  width: auto;
+  height: auto;
+}
+/* line 27, ../sass/lightbox.sass */
+#lightbox a img {
+  border: none;
+}
 
-  z-index: 1002;
-  position: fixed;
+/* line 30, ../sass/lightbox.sass */
+.lb-outerContainer {
+  position: relative;
+  background-color: white;
+  *zoom: 1;
+  width: 250px;
+  height: 250px;
+  margin: 0 auto;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  -ms-border-radius: 4px;
+  -o-border-radius: 4px;
+  border-radius: 4px;
+}
+/* line 38, ../../../../.rvm/gems/ruby-1.9.2-p290/gems/compass-0.12.1/frameworks/compass/stylesheets/compass/utilities/general/_clearfix.scss */
+.lb-outerContainer:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* line 39, ../sass/lightbox.sass */
+.lb-container {
+  padding: 10px;
+}
+
+/* line 42, ../sass/lightbox.sass */
+.lb-loader {
+  position: absolute;
+  top: 40%;
+  left: 0%;
+  height: 25%;
+  width: 100%;
+  text-align: center;
+  line-height: 0;
+}
+
+/* line 51, ../sass/lightbox.sass */
+.lb-nav {
+  position: absolute;
+  top: 0;
+  left: 0;
   height: 100%;
   width: 100%;
-  top: 0;
-  left: 0;
-  background-color: rgba(0,0,0,0.9);
-  display: none;
+  z-index: 10;
 }
 
-#lightbox-imageset{
-  z-index: 1004;
-  position: fixed;
+/* line 59, ../sass/lightbox.sass */
+.lb-container > .nav {
+  left: 0;
+}
+
+/* line 62, ../sass/lightbox.sass */
+.lb-nav a {
+  outline: none;
+}
+
+/* line 65, ../sass/lightbox.sass */
+.lb-prev, .lb-next {
+  width: 49%;
+  height: 100%;
+  background-image: url("data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7");
+  /* Trick IE into showing hover */
+  display: block;
+}
+
+/* line 72, ../sass/lightbox.sass */
+.lb-prev {
+  left: 0;
+  float: left;
+}
+
+/* line 76, ../sass/lightbox.sass */
+.lb-next {
+  right: 0;
+  float: right;
+}
+
+/* line 81, ../sass/lightbox.sass */
+.lb-prev:hover {
+  background: url(/assets/prev.png) left 48% no-repeat;
+}
+
+/* line 85, ../sass/lightbox.sass */
+.lb-next:hover {
+  background: url(/assets/next.png) right 48% no-repeat;
+}
+
+/* line 88, ../sass/lightbox.sass */
+.lb-dataContainer {
+  margin: 0 auto;
+  padding-top: 5px;
+  *zoom: 1;
   width: 100%;
-  left: 0;
-  bottom: 0;
-  display: none;
-  text-align: center;
-  background-color: rgba(0,0,0,0.4);
-  padding: 5px 0;
-
-  img{
-    @include transition(opacity, 0.2s);
-    @include opacity(0.2);
-    height: 70px;
-    width: 70px;
-    margin-right: 5px;
-    cursor: pointer;
-
-    &:last-child{
-      margin-right: 0;
-    }
-
-    &.selected{
-      @include opacity(1);
-    }
-  }
+  -moz-border-radius-bottomleft: 4px;
+  -webkit-border-bottom-left-radius: 4px;
+  -ms-border-bottom-left-radius: 4px;
+  -o-border-bottom-left-radius: 4px;
+  border-bottom-left-radius: 4px;
+  -moz-border-radius-bottomright: 4px;
+  -webkit-border-bottom-right-radius: 4px;
+  -ms-border-bottom-right-radius: 4px;
+  -o-border-bottom-right-radius: 4px;
+  border-bottom-right-radius: 4px;
+}
+/* line 38, ../../../../.rvm/gems/ruby-1.9.2-p290/gems/compass-0.12.1/frameworks/compass/stylesheets/compass/utilities/general/_clearfix.scss */
+.lb-dataContainer:after {
+  content: "";
+  display: table;
+  clear: both;
 }
 
-body.lightboxed{
-  overflow: hidden;
-  #lightbox-backdrop,
-  #lightbox-imageset{
-    display: block;
-  }
+/* line 95, ../sass/lightbox.sass */
+.lb-data {
+  padding: 0 10px;
+  color: #bbbbbb;
+}
+/* line 98, ../sass/lightbox.sass */
+.lb-data .lb-details {
+  width: 85%;
+  float: left;
+  text-align: left;
+  line-height: 1.1em;
+}
+/* line 103, ../sass/lightbox.sass */
+.lb-data .lb-caption {
+  font-size: 13px;
+  font-weight: bold;
+  line-height: 1em;
+}
+/* line 107, ../sass/lightbox.sass */
+.lb-data .lb-number {
+  display: block;
+  clear: left;
+  padding-bottom: 1em;
+  font-size: 11px;
+}
+/* line 112, ../sass/lightbox.sass */
+.lb-data .lb-close {
+  width: 35px;
+  float: right;
+  padding-bottom: 0.7em;
+  outline: none;
+}
+/* line 117, ../sass/lightbox.sass */
+.lb-data .lb-close:hover {
+  cursor: pointer;
 }
 
